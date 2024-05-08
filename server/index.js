@@ -17,6 +17,13 @@ app.use(express.json());
 
 connectDb();
 
+app.use(
+  cors({
+    origin: "https://code-date-react.vercel.app",
+    credentials: true,
+  })
+);
+
 app.get("/", (req, res) => {
   res.send("<center> <h1>Hello world</h1> </center>");
 });
