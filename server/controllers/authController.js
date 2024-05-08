@@ -11,10 +11,7 @@ const hello = async (req, res) => {
   const token = jwt.sign({ id: "1234" }, process.env.JWT_SECRET, {
     expiresIn: "1d",
   });
-  res.cookie("token", token, {
-    httpOnly: true,
-    secure: true,
-  });
+  res.cookie("token", token);
   return res.send(
     "<center><h1>Cookie sent please check the application tab</h1></center>"
   );
