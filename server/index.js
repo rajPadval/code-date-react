@@ -8,13 +8,13 @@ const { connectDb } = require("./db/connection");
 const { Server } = require("socket.io");
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: "https://code-date-react.vercel.app",
   },
 });
 require("dotenv").config();
 app.use(
   cors({
-    origin: "*",
+    origin: "https://code-date-react.vercel.app",
     credentials: true,
   })
 );
