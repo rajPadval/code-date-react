@@ -5,7 +5,7 @@ import { io } from "socket.io-client";
 import toast from "react-hot-toast";
 import { AppContext } from "../context/AppContext";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://code-date-react-api.vercel.app/");
 
 const Chats = () => {
   const { user } = useContext(AppContext);
@@ -17,7 +17,7 @@ const Chats = () => {
   useEffect(() => {
     const getFromFav = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/getFromFav", {
+        const res = await axios.get("https://code-date-react-api.vercel.app/api/getFromFav", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

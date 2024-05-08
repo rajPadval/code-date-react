@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   const checkAuth = async () => {
-    const res = await axios.get("http://localhost:5000/api/checkAuth", {
+    const res = await axios.get("https://code-date-react-api.vercel.app/api/checkAuth", {
       headers: {
         Authorization: ` Bearer ${localStorage.getItem("token")}`,
       },

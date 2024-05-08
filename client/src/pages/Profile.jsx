@@ -10,7 +10,7 @@ const Profile = () => {
   const { user } = useContext(AppContext);
 
   const getUsers = async () => {
-    const res = await axios.get("http://localhost:5000/api/getUsers");
+    const res = await axios.get("https://code-date-react-api.vercel.app/api/getUsers");
     const { data } = await res.data;
     // Filter out the current user's profile
     const filteredUsers = data.filter(
@@ -36,7 +36,7 @@ const Profile = () => {
   };
 
   const addToFav = async (id) => {
-    const res = await axios.put("http://localhost:5000/api/addToFav/" + id);
+    const res = await axios.put("https://code-date-react-api.vercel.app/api/addToFav/" + id);
     const data = await res.data;
     if (data.success === true) {
       toast.success(data.message);
@@ -46,7 +46,7 @@ const Profile = () => {
     }
   };
   const addToDis = async (id) => {
-    const res = await axios.put("http://localhost:5000/api/addToDis/" + id);
+    const res = await axios.put("https://code-date-react-api.vercel.app/api/addToDis/" + id);
     const data = await res.data;
     if (data.success === true) {
       toast.success(data.message);
