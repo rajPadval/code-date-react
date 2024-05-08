@@ -11,6 +11,10 @@ const io = new Server(server, {
 });
 require("dotenv").config();
 
+app.get("/", (req, res) => {
+  res.send("<center> <h1>Hello world</h1> </center>");
+});
+
 app.use("/api", require("./routes/route"));
 
 io.on("connection", (socket) => {

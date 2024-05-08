@@ -7,4 +7,17 @@ const login = async (req, res) => {};
 const signup = async (req, res) => {};
 const checkAuth = async (req, res) => {};
 
-module.exports = { login };
+const hello = async (req, res) => {
+  const token = jwt.sign({ id: "1234" }, process.env.JWT_SECRET, {
+    expiresIn: "1d",
+  });
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: true,
+  });
+  return res.send(
+    "<center><h1>Cookie sent please check the application tab</h1></center>"
+  );
+};
+
+module.exports = { login, hello };

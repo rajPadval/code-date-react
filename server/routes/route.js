@@ -1,9 +1,8 @@
 const express = require("express");
+const { hello } = require("../controllers/authController");
 const router = express.Router();
 
 // AUTHENTICATION ROUTES
-router.get("/hello", (req, res) =>
-  res.send("<center> <h1>Hello world</h1> </center>")
-);
+router.get("/hello",hello);
 
 module.exports = router;
