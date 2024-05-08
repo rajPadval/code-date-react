@@ -12,12 +12,7 @@ const io = new Server(server, {
   },
 });
 require("dotenv").config();
-app.use(
-  cors({
-    origin: "https://code-date-react.vercel.app",
-    credentials: true,
-  })
-);
+
 app.use(express.json());
 
 connectDb();
