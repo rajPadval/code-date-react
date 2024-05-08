@@ -1,37 +1,46 @@
-import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import { io } from "socket.io-client";
-import axios from "axios";
-const socket = io("http://localhost:5000");
+import { AppContextProvider } from "./context/AppContext";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Profile from "./pages/Profile";
+import Chats from "./pages/Chats";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    socket.on("welcome", (data) => console.log(data));
-
-    return () => {
-      socket.off("welcome");
-    };
-  }, [socket]);
-
-  const hello = async () => {
-    const response = await axios.post(
-      "https://code-date-react-api.vercel.app/api/hello",
-      {},
-      { withCredentials: true }
-    );
-    const data = await response.data;
-    console.log(data);
-  };
-
+const App = () => {
   return (
     <>
-      <button onClick={hello}>Get Cookies</button>
+      <AppContextProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/profile/chats"
+              element={
+                <ProtectedRoute>
+                  <Chats />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </AppContextProvider>
     </>
   );
-}
+};
 
 export default App;
