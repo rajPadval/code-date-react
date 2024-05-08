@@ -19,7 +19,9 @@ function App() {
 
   const hello = async () => {
     const response = await axios.post(
-      "https://code-date-react-api.vercel.app/api/hello"
+      "https://code-date-react-api.vercel.app/api/hello",
+      {},
+      { withCredentials: true }
     );
     const data = await response.data;
     console.log(data);
