@@ -24,12 +24,7 @@ const Login = () => {
 
     const res = await axios.post(
       "https://code-date-react-api.vercel.app/api/login",
-      { email, password },
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
+      { email, password }
     );
     const data = await res.data;
     setUser(data.data);
