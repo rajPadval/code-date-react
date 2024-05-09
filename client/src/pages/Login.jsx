@@ -23,7 +23,7 @@ const Login = () => {
     }
 
     const res = await axios.post(
-      "https://code-date-react-api.vercel.app/api/login",
+      "https://code-date-api.onrender.com/api/login",
       { email, password }
     );
     const data = await res.data;

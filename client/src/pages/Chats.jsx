@@ -5,11 +5,9 @@ import { io } from "socket.io-client";
 import toast from "react-hot-toast";
 import { AppContext } from "../context/AppContext";
 
-
 const Chats = () => {
-  
-  const socket = io("https://code-date-react-api.vercel.app");
-  
+  const socket = io("https://code-date-api.onrender.com");
+
   const { user } = useContext(AppContext);
   const [friends, setFriends] = useState([]);
   const [messages, setMessages] = useState([]);
@@ -19,11 +17,14 @@ const Chats = () => {
   useEffect(() => {
     const getFromFav = async () => {
       try {
-        const res = await axios.get("https://code-date-react-api.vercel.app/api/getFromFav", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        const res = await axios.get(
+          "https://code-date-api.onrender.com/api/getFromFav",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         const { data } = await res.data;
         setFriends(data);
       } catch (error) {

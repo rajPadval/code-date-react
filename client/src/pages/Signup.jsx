@@ -53,7 +53,7 @@ const Signup = () => {
         toast.error("Error uploading image");
         return;
       } else {
-        const res = await axios.post("https://code-date-react-api.vercel.app/api/signup", {
+        const res = await axios.post("https://code-date-api.onrender.com/api/signup", {
           name,
           email,
           password,
