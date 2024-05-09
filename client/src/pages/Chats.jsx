@@ -5,7 +5,7 @@ import { io } from "socket.io-client";
 import toast from "react-hot-toast";
 import { AppContext } from "../context/AppContext";
 
-const socket = io("https://code-date-react-api.vercel.app/");
+const socket = io("https://code-date-react-api.vercel.app");
 
 const Chats = () => {
   const { user } = useContext(AppContext);
