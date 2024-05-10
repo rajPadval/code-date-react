@@ -5,8 +5,10 @@ import { io } from "socket.io-client";
 import toast from "react-hot-toast";
 import { AppContext } from "../context/AppContext";
 
+const socket = io("https://code-date-api.onrender.com");
+
 const Chats = () => {
-  const socket = io("https://code-date-api.onrender.com");
+  
 
   const { user } = useContext(AppContext);
   const [friends, setFriends] = useState([]);
